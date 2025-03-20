@@ -13,3 +13,23 @@ document.getElementById("id").value;
 document.getElementById("id").addEventListener("click", function);
 document.addEventListener("DOMContentLoaded", function() {  });
 */
+
+function jcp() {
+    console.log("Button clicked");
+    gender = document.getElementById("genderdd").value;
+    breed = document.getElementById("breedd").value;
+    ageInYears = document.getElementById("agedd").value;
+
+    avgTreatmentCost = petdata[ageInYears]["costOfTreatment"];
+    illnessChance = parseFloat(petdata[ageInYears]["ill"])/100;
+    ev = (avgTreatmentCost * illnessChance) * (1+gender) * (1+breed);
+    ev = ev.toFixed(2);
+
+    console.log(`Premium is: ${ev}`)
+    document.getElementById("premcalc").innerHTML = "$"+ev;
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+    // jcp();
+    document.getElementById("calcbtn").addEventListener("click",jcp )
+});
